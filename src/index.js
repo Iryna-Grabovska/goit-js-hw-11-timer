@@ -1,12 +1,10 @@
-// import './sass/main.scss';
-
+ //import './styles.css';
+let date = new Date('Sep 13 2021 21:45:00');
 function counts() {
   
   let now = new Date();
+
   time = date - now;
-  console.log(time);
-  // const now = new Date().getTime()
-  // const time = CountdownTimer - now;
   /*
    * Оставшиеся дни: делим значение UTC на 1000 * 60 * 60 * 24, количество
    * миллисекунд в одном дне (миллисекунды * секунды * минуты * часы)
@@ -31,13 +29,24 @@ function counts() {
    * миллисекунд в одной секунде (1000)
    */
   const secs = Math.floor((time % (1000 * 60)) / 1000);
+  // if (time < 0) {
+  //   days = days + 7;
+  //   hours = hours + 24;
+  //   mins = mins + 60;
+  //   secs = secs + 60;
+  
+  
+  if (time <= 0) {
+    document.querySelector('.timer').innerText = 'to late';
+ 
+  } else {
+    document.querySelector('[ data-value="days"]').innerText = days;
+    document.querySelector('[ data-value="hours"]').innerText = hours;
 
-  document.querySelector('[ data-value="days"]').innerText = days;
-  document.querySelector('[ data-value="hours"]').innerText = hours;
+    document.querySelector('[ data-value="mins"]').innerText = mins;
 
-  document.querySelector('[ data-value="mins"]').innerText = mins;
-
-  document.querySelector('[ data-value="secs"]').innerText = secs;
-}
+    document.querySelector('[ data-value="secs"]').innerText = secs;
+  };
+};
 counts();
 setInterval(counts, 1000);
